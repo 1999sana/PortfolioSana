@@ -1,0 +1,18 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $to = "sanaguiche@gmail.com";
+    $subject = $_POST['subject'];
+    $message = "Full Name: " . $_POST['full_name'] . "\n";
+    $message .= "Email: " . $_POST['email'] . "\n";
+    $message .= "Mobile Number: " . $_POST['mobile_number'] . "\n";
+    $message .= "Message: \n" . $_POST['message'];
+
+    $headers = "From: " . $_POST['email'];
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Message sent successfully!";
+    } else {
+        echo "Failed to send the message.";
+    }
+}
+?>
